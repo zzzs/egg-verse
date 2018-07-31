@@ -7,7 +7,9 @@ class HomeController extends Controller {
     this.ctx.body = 'hi, egg';
   }
   async index2() {
-    this.ctx.body = 'hi, egg2';
+    let data = this.ctx.model.User.find({}).exec();
+    console.log(data);
+    await this.ctx.render('hello.html', { data: 'hello2' });
   }
 }
 

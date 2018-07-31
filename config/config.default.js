@@ -9,5 +9,22 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [];
 
+  // mongo config
+  config.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1:27017/test',
+      options: {},
+    },
+  };
+
+  // ejs config
+  config.view = {
+    defaultViewEngine: 'ejs',
+    mapping: {
+      '.html': 'ejs',
+    },
+  };
+  config.ejs = {};
+
   return config;
 };

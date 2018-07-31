@@ -4,7 +4,6 @@ module.exports = app => {
 
   const UserSchema = new Schema({
     name: { type: String  },
-    pwd: { type: String  },
     password: { type: String  },
     nickname: { type: String  },
     ctime: { type: Date, default: Date.now },

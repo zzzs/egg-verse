@@ -24,7 +24,10 @@ module.exports = appInfo => {
       '.html': 'ejs',
     },
   };
-  config.ejs = {};
+  // config.ejs = {};
+  config.ejs = {
+    layout: 'layout/home.html',
+  };
 
   return config;
 };

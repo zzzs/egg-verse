@@ -1,0 +1,34 @@
+'use strict';
+
+module.exports = app => {
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+  const ObjectId = Schema.ObjectId;
+
+  const VerseSchema = new Schema({
+    title: { type: String },
+    content: { type: String },
+    abstract: { type: String },
+    // author_id: { type: ObjectId },
+    top: { type: Boolean, default: false }, // 置顶帖
+    good: { type: Boolean, default: false }, // 精华帖
+    lock: { type: Boolean, default: false }, // 被锁定主题
+    deleted: { type: Boolean, default: false },
+    // reply_count: { type: Number, default: 0 },
+    // visit_count: { type: Number, default: 0 },
+    // collect_count: { type: Number, default: 0 },
+    ctime: { type: Date, default: Date.now },
+    mtime: { type: Date, default: Date.now },
+    // last_reply: { type: ObjectId },
+    // last_reply_at: { type: Date, default: Date.now },
+    // content_is_html: { type: Boolean },
+    // tab: { type: String },
+    type: { type: Number, default: 1 }
+  });
+
+  // VerseSchema.index({ ctime: -1 });
+  // VerseSchema.index({ top: -1, last_reply_at: -1 });
+  // VerseSchema.index({ author_id: 1, ctime: -1 });
+
+  return mongoose.model('Verse', VerseSchema);
+};

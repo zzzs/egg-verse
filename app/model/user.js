@@ -6,8 +6,11 @@ module.exports = app => {
     name: { type: String  },
     password: { type: String  },
     nickname: { type: String  },
+
     ctime: { type: Date, default: Date.now },
     mtime: { type: Date, default: Date.now },
+
+    score: { type: Number, default: 0 },
     logincount: Number
   });
 

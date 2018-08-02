@@ -1,1 +1,16 @@
-aaaaaaaaaaaaaaaaaaa
+<% let len = data.length; %>
+<% let colLen = 4; %>
+<% let rowLen = Math.ceil(len / colLen); %>
+
+<% for (var i = 0; i < rowLen; i++) { %>
+  <div class="row" style="margin-bottom: 20px;">
+    <% for (var j = 0; j < colLen; j++) { %>
+      <% if (colLen * i + j === len) { break; } %>
+      <div class="col-md-<%= 12 / colLen %>">
+        <div class="bg-light" style="width: 100%; height: 300px;">
+          <%= data[colLen * i + j] %>
+        </div>
+      </div>
+    <% } %>
+  </div>
+<% } %>

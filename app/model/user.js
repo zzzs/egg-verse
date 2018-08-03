@@ -11,7 +11,9 @@ module.exports = app => {
     mtime: { type: Date, default: Date.now },
 
     score: { type: Number, default: 0 },
-    logincount: Number
+    logincount: Number,
+
+    is_admin: { type: Boolean, default: false } // admin
   });
 
   return mongoose.model('User', UserSchema);

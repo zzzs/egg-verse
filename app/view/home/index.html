@@ -8,7 +8,7 @@
       <% if (colLen * i + j === len) { break; } %>
       <div class="col-md-<%= 12 / colLen %>">
         <div class="bg-light" style="width: 100%; height: 300px;">
-          <%= data[colLen * i + j] %>
+          <%= data[colLen * i + j]['_id'] %>
         </div>
       </div>
     <% } %>

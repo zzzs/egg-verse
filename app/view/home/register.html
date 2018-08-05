@@ -1,0 +1,29 @@
+<% if (typeof errorcode !== 'undefined') { %>
+  <div class="alert alert-dismissible fade show alert-danger" role="alert">
+    <strong>注册失败：</strong> <%= errormsg %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% } %>
+<form method="post">
+  <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
+  <div class="form-group">
+    <label for="exampleInputUser1">账号</label>
+    <input type="text" name="username" class="form-control" id="exampleInputUser1" placeholder="输入账号">
+    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">密码</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="输入密码">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword2">再输入一次密码</label>
+    <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="输入密码">
+  </div>
+
+  <button type="submit" class="btn btn-primary">注册</button>
+</form>
+

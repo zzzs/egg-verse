@@ -17,3 +17,8 @@ exports.passport = {
   enable: true,
   package: 'egg-passport',
 };
+
+exports.validate = {
+  enable: true,
+  package: 'egg-validate',
+};

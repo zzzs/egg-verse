@@ -1,0 +1,21 @@
+<% if (typeof errormsg !== 'undefined') { %>
+  <div class="alert alert-dismissible fade show alert-info" role="alert">
+    <strong><%= errormsg %></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% } %>
+<form method="post">
+  <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
+  <div class="form-group">
+    <label>账号</label>
+    <input type="text" name="username" class="form-control" aria-describedby="emailHelp" placeholder="输入账号">
+  </div>
+
+  <div class="form-group">
+    <label>密码</label>
+    <input type="password" name="password" class="form-control" placeholder="输入密码">
+  </div>
+  <button type="submit" class="btn btn-primary">登录</button>
+</form>

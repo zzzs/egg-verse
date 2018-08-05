@@ -5,7 +5,7 @@ module.exports = app => {
   const UserSchema = new Schema({
     name: { type: String  },
     password: { type: String  },
-    nickname: { type: String  },
+    // nickname: { type: String  },
 
     ctime: { type: Date, default: Date.now },
     mtime: { type: Date, default: Date.now },

@@ -9,7 +9,7 @@ module.exports = app => {
     title: { type: String },
     content: { type: String },
     abstract: { type: String },
-    // author_id: { type: ObjectId },
+    author_id: { type: ObjectId },
     top: { type: Boolean, default: false }, // 置顶帖
     good: { type: Boolean, default: false }, // 精华帖
     lock: { type: Boolean, default: false }, // 被锁定主题

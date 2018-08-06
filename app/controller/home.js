@@ -12,6 +12,10 @@ class HomeController extends Controller {
     data = await this.ctx.service.verse.list();
     await this.ctx.render('home/index', {data: data});
   }
+
+  async about() {
+    await this.ctx.render('home/about');
+  }
 }
 
 module.exports = HomeController;

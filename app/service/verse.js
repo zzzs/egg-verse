@@ -10,6 +10,16 @@ class VerseService extends Service {
     const ret = await this.ctx.model.Verse.create(data);
     return ret;
   }
+
+  async findOneById(_id) {
+    const ret = await this.findOne({_id: _id});
+    return ret;
+  }
+
+  async findOne(data) {
+    const ret = await this.ctx.model.Verse.findOne(data);
+    return ret;
+  }
 }
 
 module.exports = VerseService;

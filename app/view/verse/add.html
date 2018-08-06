@@ -1,3 +1,11 @@
+<% if (typeof errormsg !== 'undefined') { %>
+  <div class="alert alert-dismissible fade show alert-info" role="alert">
+    <strong><%= errormsg %></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% } %>
 <form method="post" action="/verse/add">
   <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
   <div class="form-group">

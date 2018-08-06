@@ -2,6 +2,7 @@ module.exports = app => {
   const { router, controller } = app;
 
   router.get('/', controller.home.index);
+  router.get('/about', controller.home.about);
 
 
   // 注册
@@ -22,5 +23,7 @@ module.exports = app => {
 
   router.get('/verse', controller.verse.index);
   router.post('/verse/add', controller.verse.add);
+  router.get('/verse/edit/:id', controller.verse.edit);
+  router.get('/verse/:id', controller.verse.info);
 
 };

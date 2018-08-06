@@ -25,13 +25,21 @@ class VerseController extends Controller {
 
   async edit() {
     const { ctx } = this;
-    const author_id = ctx.user._id;
+    let author_id = '';
+    if (ctx.user) {
+      author_id = ctx.user._id;
+    }
+    if (author_id === '') {
+      await this.ctx.redirect('/login');
+      return;
+    }
     const id = ctx.params.id;
     let data = {
       _id: id,
-      author_id: author_id
+      author_id
     };
     let verse = await this.ctx.service.verse.findOne(data);
+
     // todo admin
     if (!verse) {
       ctx.status = 403;

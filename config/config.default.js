@@ -7,7 +7,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1532908499083_8935';
 
   // add your config here
-  config.middleware = [ 'userAuth' ];
+  config.middleware = [ 'userAuth', 'errorPage' ];
 
   config.security = {
     csrf: {

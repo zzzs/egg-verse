@@ -8,4 +8,8 @@
 <% } else { %>
   <h1><%= verse._id %></h1>
   <h1><%= verse.author_id %></h1>
+  <% if (verse.author_id == cur_user._id) { %>
+    <a href="/verse/edit/<%= verse._id %>">edit</a>
+  <% } %>
+
 <% } %>

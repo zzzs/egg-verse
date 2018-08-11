@@ -1,13 +1,23 @@
 const Service = require('egg').Service;
 
 class VerseService extends Service {
-  async list() {
-    const ret = await this.ctx.model.Verse.find({});
+  async list(where) {
+    const ret = await this.ctx.model.Verse.find(where);
     return ret;
   }
 
   async create(data) {
     const ret = await this.ctx.model.Verse.create(data);
+    return ret;
+  }
+
+  async create(data) {
+    const ret = await this.ctx.model.Verse.create(data);
+    return ret;
+  }
+
+  async update(where, data) {
+    const ret = await this.ctx.model.Verse.update(where, data);
     return ret;
   }
 

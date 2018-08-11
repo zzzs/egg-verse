@@ -9,7 +9,17 @@ class HomeController extends Controller {
     for (var i = 0; i < len; i++) {
         data.push(i);
     }
-    data = await this.ctx.service.verse.list();
+    let type = this.ctx.query.type;
+    let where = {};
+    if (type !== undefined) {
+      where.type = type;
+    }
+    let title = this.ctx.query.title;
+
+    if (type !== undefined) {
+      where.title = {$regex: title, $options: 'i'};
+    }
+    data = await this.ctx.service.verse.list(where);
     await this.ctx.render('home/index', {data: data});
   }
 

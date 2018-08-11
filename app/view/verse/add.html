@@ -6,20 +6,40 @@
     </button>
   </div>
 <% } %>
-<form method="post" action="/verse/add">
-  <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
-  <div class="form-group">
-    <label>标题</label>
-    <input type="text" name="title" class="form-control" aria-describedby="emailHelp">
-  </div>
-  <div class="form-group">
-    <label>摘要</label>
-    <input type="text" name="abstract" class="form-control" aria-describedby="emailHelp">
-  </div>
-  <div class="form-group">
-    <label>内容</label>
-    <input type="text" name="content" class="form-control" aria-describedby="emailHelp">
-  </div>
-  <button type="submit" class="btn btn-primary">提交</button>
-</form>
+<% if (action === 'add') { %>
+  <form method="post" action="/verse/add">
+    <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
+    <div class="form-group">
+      <label>标题</label>
+      <input type="text" name="title" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label>摘要</label>
+      <input type="text" name="abstract" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label>内容</label>
+      <input type="text" name="content" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">新增</button>
+  </form>
 
+<% } else { %>
+  <form method="post" action="/verse/update">
+    <input type="hidden" name="v_csrf" value="<%= ctx.csrf %>">
+    <input type="hidden" name="id" value="<%= verse._id %>">
+    <div class="form-group">
+      <label>标题</label>
+      <input value="<%= verse.title %>" type="text" name="title" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label>摘要</label>
+      <input value="<%= verse.abstract %>" type="text" name="abstract" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label>内容</label>
+      <input value="<%= verse.content %>" type="text" name="content" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-primary">编辑</button>
+  </form>
+<% } %>

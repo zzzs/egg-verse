@@ -1,15 +1,21 @@
 <% if (typeof errormsg !== 'undefined') { %>
-<div class="alert alert-dismissible fade show alert-info" role="alert">
-  <strong><%= errormsg %></strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+
+  <div class="alert alert-dismissible fade show alert-info" role="alert">
+    <strong><%= errormsg %></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
 <% } else { %>
-  <h1><%= verse._id %></h1>
-  <h1><%= verse.author_id %></h1>
-  <% if (verse.author_id == cur_user._id) { %>
+  <% if (cur_user !== null && verse.author_id == cur_user._id) { %>
     <a href="/verse/edit/<%= verse._id %>">edit</a>
   <% } %>
+  <h1><%= verse._id %></h1>
+  <h1><%= verse.title %></h1>
+  <h2><%= verse.abstract %></h2>
+  <p><%= verse.content %></p>
+
+  <h1><%= verse.author_id %></h1>
 
 <% } %>

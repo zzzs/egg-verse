@@ -9,6 +9,12 @@ module.exports = appInfo => {
   // add your config here
   config.middleware = [ 'userAuth', 'errorPage' ];
 
+  config.verse = {
+    list_col: 2,
+    list_row: 1,
+    page_num: 3
+  };
+
   config.security = {
     csrf: {
       queryName: '_csrf', // 通过 query 传递 CSRF token 的默认字段为 _csrf

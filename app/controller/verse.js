@@ -66,7 +66,7 @@ class VerseController extends Controller {
       content,
       abstract
     };
-    await this.ctx.service.verse.update(where, data);
+    await this.ctx.service.verse.update(where, {$set: data});
     await this.ctx.redirect('/verse/' + verseId);
   }
 

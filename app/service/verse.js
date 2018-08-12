@@ -1,8 +1,16 @@
 const Service = require('egg').Service;
 
 class VerseService extends Service {
-  async list(where) {
-    const ret = await this.ctx.model.Verse.find(where);
+  async list(where, page, pageSize) {
+    const ret = await this.ctx.model.Verse
+      .find(where)
+      .limit(pageSize)
+      .skip(page);
+    return ret;
+  }
+
+  async listCount(where) {
+    const ret = await this.ctx.model.Verse.count(where);
     return ret;
   }
 

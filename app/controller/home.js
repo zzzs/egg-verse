@@ -4,7 +4,7 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    let len = 16;
+    let len = 90;
     let data = [];
     for (var i = 0; i < len; i++) {
         data.push(i);
@@ -16,11 +16,28 @@ class HomeController extends Controller {
     }
     let title = this.ctx.query.title;
 
-    if (type !== undefined) {
+    if (title !== undefined && title !== '') {
       where.title = {$regex: title, $options: 'i'};
     }
-    data = await this.ctx.service.verse.list(where);
-    await this.ctx.render('home/index', {data: data});
+
+    const verseConfig = this.config.verse;
+    const pageSize = verseConfig.list_col * verseConfig.list_row;
+    const showPageNum = verseConfig.page_num;
+    let page = 1;
+    if (this.ctx.query.page !== undefined) {
+      page = parseInt(this.ctx.query.page);
+    }
+    let skipNum = (page - 1) * pageSize;
+    // let total = data.length;
+    let total = await this.ctx.service.verse.listCount(where);
+
+    let pageNum = Math.ceil(total / pageSize);
+    data = data.slice(skipNum, skipNum + pageSize);
+    if (data.length === 0) {
+      return await this.ctx.redirect('/');
+    }
+    data = await this.ctx.service.verse.list(where, skipNum, pageSize);
+    await this.ctx.render('home/index', {data, pageNum, curPage: page, type: type});
   }
 
   async about() {

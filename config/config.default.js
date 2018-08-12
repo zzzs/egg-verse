@@ -15,6 +15,16 @@ module.exports = appInfo => {
     page_num: 3
   };
 
+  // RSS配置
+  config.rss = {
+    title: 'XL：verse诗骚',
+    link: 'http://127.0.0.1',
+    language: 'zh-cn',
+    description: 'XL：verse诗骚',
+    // 最多获取的RSS Item数量
+    max_rss_items: 10,
+  };
+
   config.security = {
     csrf: {
       queryName: '_csrf', // 通过 query 传递 CSRF token 的默认字段为 _csrf

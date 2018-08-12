@@ -3,6 +3,8 @@ module.exports = app => {
 
   const userRequired = app.middleware.userRequired();
 
+  router.get('/rss', controller.rss.index);
+
   router.get('/', controller.home.index);
   router.get('/about', controller.home.about);
 

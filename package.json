@@ -4,6 +4,7 @@
   "description": "诗骚",
   "private": true,
   "dependencies": {
+    "data2xml": "^1.2.5",
     "egg": "^2.2.1",
     "egg-mongoose": "^3.1.0",
     "egg-passport": "^2.0.1",

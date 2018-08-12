@@ -1,3 +1,5 @@
+'use strict';
+
 const Service = require('egg').Service;
 
 class VerseService extends Service {
@@ -41,4 +43,3 @@ class VerseService extends Service {
 }
 
 module.exports = VerseService;
-

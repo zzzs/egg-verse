@@ -8,7 +8,6 @@ var md5 = crypto.createHash('md5');
 module.exports = app => {
   app.locals.Loader = Loader;
   app.locals.config = app.config;
-
   // 挂载 strategy
   app.passport.use(new LocalStrategy({
     passReqToCallback: true

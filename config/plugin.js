@@ -1,17 +1,28 @@
 'use strict';
+const path = require('path');
+
+exports.xllog = {
+  enable: true,
+  path: path.join(__dirname, '../lib/plugin/egg-xllog'),
+};
+
+exports.xl = {
+  enable: true,
+  package: 'egg-xl',
+};
 
 // had enabled by egg
 // exports.static = true;
 
-exports.mongoose = {
-  enable: true,
-  package: 'egg-mongoose',
-};
+// exports.mongoose = {
+//   enable: true,
+//   package: 'egg-mongoose',
+// };
 
-exports.redis = {
-  enable: true,
-  package: 'egg-redis',
-};
+// exports.redis = {
+//   enable: true,
+//   package: 'egg-redis',
+// };
 
 exports.ejs = {
   enable: true,

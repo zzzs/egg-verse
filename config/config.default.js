@@ -50,6 +50,13 @@ module.exports = appInfo => {
     prefix: 'xlverse_'
   }
 
+  config.xl = {
+    client: {
+      name: 'xiaolei',
+      sex: 'boy',
+    }
+  }
+
   // ejs config
   config.view = {
     defaultViewEngine: 'ejs',

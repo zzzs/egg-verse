@@ -3,6 +3,11 @@
 module.exports = appInfo => {
   const config = exports = {};
 
+  config.onerror = {
+    // 线上页面发生异常时，重定向到这个页面上
+    // errorPageUrl: '/xxx.html',
+  },
+
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1532908499083_8935';
 

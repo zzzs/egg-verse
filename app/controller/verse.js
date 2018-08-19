@@ -1,8 +1,8 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
-class VerseController extends Controller {
+class VerseController extends BaseController {
   async index() {
     await this.ctx.render('verse/add.html', {action: 'add'});
   }

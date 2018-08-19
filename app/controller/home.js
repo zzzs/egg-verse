@@ -1,8 +1,8 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
-class HomeController extends Controller {
+class HomeController extends BaseController {
   async index() {
     let len = 90;
     let data = [];
@@ -28,15 +28,15 @@ class HomeController extends Controller {
       page = parseInt(this.ctx.query.page);
     }
     let skipNum = (page - 1) * pageSize;
-    // let total = data.length;
-    let total = await this.ctx.service.verse.listCount(where);
+    let total = data.length;
+    // let total = await this.ctx.service.verse.listCount(where);
 
     let pageNum = Math.ceil(total / pageSize);
     data = data.slice(skipNum, skipNum + pageSize);
     if (data.length === 0) {
       return await this.ctx.redirect('/');
     }
-    data = await this.ctx.service.verse.list(where, skipNum, pageSize);
+    // data = await this.ctx.service.verse.list(where, skipNum, pageSize);
     await this.ctx.render('home/index', {data, pageNum, curPage: page, type: type});
   }
 

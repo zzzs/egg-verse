@@ -1,11 +1,11 @@
 'use strict';
 
-const Controller = require('egg').Controller;
+const BaseController = require('./base');
 
 var crypto = require('crypto');
 var md5 = crypto.createHash('md5');
 
-class UserController extends Controller {
+class UserController extends BaseController {
   async index() {
     await this.ctx.render('user/index.html');
   }

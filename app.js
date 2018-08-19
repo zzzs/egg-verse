@@ -6,6 +6,39 @@ var crypto = require('crypto');
 var md5 = crypto.createHash('md5');
 
 module.exports = app => {
+
+  app.router.group = (groupOptions, cb) => {
+    const prefix = groupOptions.prefix;
+    const middlewares = groupOptions.middlewares;
+    const addPrefix = (prefix, path) => {
+      return prefix + path;
+    }
+
+    const proxy = new Proxy(app.router, {
+      get(target, property) {
+        const fn = target[property];
+        const fnProxy = new Proxy(fn, {
+          apply(targetFn, ctx, args) {
+            if (args.length >= 3) {
+              // app.get(name, url, [...middleware], controller)
+              args[1] = addPrefix(prefix, args[1]);
+              args.splice(2, 0, ...middlewares);
+            } else {
+              // app.get(url, [...middleware], controller)
+              args[0] = addPrefix(prefix, args[0]);
+              args.splice(1, 0, ...middlewares);
+            }
+            return Reflect.apply(targetFn, ctx, args);
+          },
+        });
+        return fnProxy;
+      },
+    });
+    cb(proxy);
+    // return router.namespace(...args);
+  };
+
+
   app.locals.Loader = Loader;
   app.locals.config = app.config;
   // 挂载 strategy

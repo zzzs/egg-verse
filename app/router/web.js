@@ -3,10 +3,17 @@ module.exports = app => {
 
   const userRequired = app.middleware.userRequired();
 
+  router.group({prefix: '/aaa', middlewares: [userRequired]}, (router) => {
+    // router.get('/rss', controller.rss.index);
+    router.get('/', controller.home.index);
+    router.get('/about', controller.home.about);
+  });
+
   router.get('/rss', controller.rss.index);
 
   router.get('/', controller.home.index);
   router.get('/about', controller.home.about);
+
 
   // 注册
   router.get('/register', controller.user.register);

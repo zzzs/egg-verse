@@ -4,39 +4,43 @@ const LocalStrategy = require('passport-local').Strategy;
 const Loader = require('Loader');
 var crypto = require('crypto');
 var md5 = crypto.createHash('md5');
+// const is = require('is-type-of');
+// const assert = require('assert');
 
 module.exports = app => {
 
-  app.router.group = (groupOptions, cb) => {
-    const prefix = groupOptions.prefix;
-    const middlewares = groupOptions.middlewares;
-    const addPrefix = (prefix, path) => {
-      return prefix + path;
-    }
+  // app.router.group = (groupOptions, cb) => {
+  //   const name = groupOptions.name | '';
+  //   const prefix = groupOptions.prefix | '';
+  //   const middlewares = groupOptions.middlewares | [];
 
-    const proxy = new Proxy(app.router, {
-      get(target, property) {
-        const fn = target[property];
-        const fnProxy = new Proxy(fn, {
-          apply(targetFn, ctx, args) {
-            if (args.length >= 3) {
-              // app.get(name, url, [...middleware], controller)
-              args[1] = addPrefix(prefix, args[1]);
-              args.splice(2, 0, ...middlewares);
-            } else {
-              // app.get(url, [...middleware], controller)
-              args[0] = addPrefix(prefix, args[0]);
-              args.splice(1, 0, ...middlewares);
-            }
-            return Reflect.apply(targetFn, ctx, args);
-          },
-        });
-        return fnProxy;
-      },
-    });
-    cb(proxy);
-    // return router.namespace(...args);
-  };
+  //   // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+  //   const proxy = new Proxy(app.router, {
+  //     get(target, property) {
+  //       const fn = target[property];
+  //       const fnProxy = new Proxy(fn, {
+  //         apply(targetFn, ctx, args) {
+  //           // egg-core\lib\utils\router.js#spliteAndResolveRouterParams()
+  //           if (args.length >= 3 && (is.string(args[1]) || is.regExp(args[1]))) {
+  //             // app.get(name, url, [...middleware], controller)
+  //             args[0] = joinStr(name, args[0]);
+  //             args[1] = joinStr(prefix, args[1]);
+  //             args.splice(2, 0, ...middlewares);
+  //           } else {
+  //             // app.get(url, [...middleware], controller)
+  //             args[0] = joinStr(prefix, args[0]);
+  //             args.splice(1, 0, ...middlewares);
+  //           }
+  //           // return targetFn.apply(ctx, args);
+  //           // es6 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect
+  //           return Reflect.apply(targetFn, ctx, args);
+  //         },
+  //       });
+  //       return fnProxy;
+  //     },
+  //   });
+  //   cb(proxy);
+  // };
 
 
   app.locals.Loader = Loader;

@@ -3,9 +3,9 @@ module.exports = app => {
 
   const userRequired = app.middleware.userRequired();
 
-  router.group({prefix: '/aaa', middlewares: [userRequired]}, (router) => {
-    // router.get('/rss', controller.rss.index);
-    router.get('/', controller.home.index);
+  router.group({name: 'home::', prefix: '/aaa', middlewares: [userRequired]}, (router) => {
+    router.get('/rss', controller.rss.index);
+    router.get('index', '/', controller.home.index);
     router.get('/about', controller.home.about);
   });
 
@@ -13,7 +13,6 @@ module.exports = app => {
 
   router.get('/', controller.home.index);
   router.get('/about', controller.home.about);
-
 
   // 注册
   router.get('/register', controller.user.register);
@@ -36,5 +35,4 @@ module.exports = app => {
   router.get('/verse/edit/:id', userRequired, controller.verse.edit);
   router.post('/verse/update', userRequired, controller.verse.update);
   router.get('/verse/:id', controller.verse.info);
-
 };

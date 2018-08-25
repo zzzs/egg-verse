@@ -19,15 +19,15 @@ exports.routerGroup = {
 // had enabled by egg
 // exports.static = true;
 
-// exports.mongoose = {
-//   enable: true,
-//   package: 'egg-mongoose',
-// };
+exports.mongoose = {
+  enable: true,
+  package: 'egg-mongoose',
+};
 
-// exports.redis = {
-//   enable: true,
-//   package: 'egg-redis',
-// };
+exports.redis = {
+  enable: true,
+  package: 'egg-redis',
+};
 
 exports.ejs = {
   enable: true,

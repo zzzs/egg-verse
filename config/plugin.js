@@ -6,28 +6,28 @@ exports.xllog = {
   path: path.join(__dirname, '../lib/plugin/egg-xllog'),
 };
 
-exports.routergroup = {
-  enable: true,
-  path: path.join(__dirname, '../lib/plugin/egg-router-group'),
-};
+// exports.xl = {
+//   enable: true,
+//   package: 'egg-xl',
+// };
 
-exports.xl = {
+exports.routerGroup = {
   enable: true,
-  package: 'egg-xl',
+  package: 'egg-router-group',
 };
 
 // had enabled by egg
 // exports.static = true;
 
-// exports.mongoose = {
-//   enable: true,
-//   package: 'egg-mongoose',
-// };
+exports.mongoose = {
+  enable: true,
+  package: 'egg-mongoose',
+};
 
-// exports.redis = {
-//   enable: true,
-//   package: 'egg-redis',
-// };
+exports.redis = {
+  enable: true,
+  package: 'egg-redis',
+};
 
 exports.ejs = {
   enable: true,

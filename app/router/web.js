@@ -3,12 +3,6 @@ module.exports = app => {
 
   const userRequired = app.middleware.userRequired();
 
-  router.group({name: 'home::', prefix: '/aaa', middlewares: [userRequired]}, (router) => {
-    router.get('/rss', controller.rss.index);
-    router.get('index', '/', controller.home.index);
-    router.get('/about', controller.home.about);
-  });
-
   router.get('/rss', controller.rss.index);
 
   router.get('/', controller.home.index);

@@ -29,14 +29,14 @@ class HomeController extends BaseController {
     }
     let skipNum = (page - 1) * pageSize;
     let total = data.length;
-    // let total = await this.ctx.service.verse.listCount(where);
+    let total = await this.ctx.service.verse.listCount(where);
 
     let pageNum = Math.ceil(total / pageSize);
     data = data.slice(skipNum, skipNum + pageSize);
     if (data.length === 0) {
       return await this.ctx.redirect('/');
     }
-    // data = await this.ctx.service.verse.list(where, skipNum, pageSize);
+    data = await this.ctx.service.verse.list(where, skipNum, pageSize);
     await this.ctx.render('home/index', {data, pageNum, curPage: page, type: type});
   }
 

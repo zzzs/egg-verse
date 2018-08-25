@@ -8,6 +8,7 @@ const name = process.argv.splice(2);
 const scheduleFunc = async () => {
   await app.ready();
   await app.runSchedule(name[0]);
+  app.close()
 }
 
 scheduleFunc();

@@ -1,7 +1,7 @@
 'use strict';
 
 const LocalStrategy = require('passport-local').Strategy;
-const Loader = require('Loader');
+const Loader = require('loader');
 var crypto = require('crypto');
 var md5 = crypto.createHash('md5');
 

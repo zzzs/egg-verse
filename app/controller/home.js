@@ -28,7 +28,7 @@ class HomeController extends BaseController {
       page = parseInt(this.ctx.query.page);
     }
     let skipNum = (page - 1) * pageSize;
-    let total = data.length;
+    // let total = data.length;
     let total = await this.ctx.service.verse.listCount(where);
 
     let pageNum = Math.ceil(total / pageSize);
